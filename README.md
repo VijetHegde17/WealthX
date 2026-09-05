@@ -1,9 +1,11 @@
 # WealthX — AI Revenue Recovery & Financial Intelligence Agent
 
-> **"Intelligence for Every Financial Decision"**  
-> Built by **VisionX** • Developed by **Vijet Hegde**  
-> **GitHub**: [VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX) • **Live Application**: [team-vision-x.vercel.app](https://team-vision-x.vercel.app/)  
-> **Buildathon Focus**: **Razorpay AI Buildathon** — Primary: **Track 03 (AI Revenue Recovery)** • Secondary: **Track 04 (AI Finance Controller)**
+> "Intelligence for Every Financial Decision"
+
+> Developed by **Vijet Hegde**
+
+**GitHub**: [https://github.com/VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)  
+**Buildathon Focus**: **Razorpay AI Buildathon** (Solo Project) — Primary: **Track 03 (AI Revenue Recovery)** • Secondary: **Track 04 (AI Finance Controller)**
 
 ---
 
@@ -432,17 +434,25 @@ All recovery and reconciliation routes require standard Bearer token authenticat
 
 ## 👨‍💻 About the Developer
 
-**Vijet Hegde**  
-- **GitHub**: [@VijetHegde17](https://github.com/VijetHegde17)  
-- **Project Repository**: [VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)  
+**Vijet Hegde**
 
-Vijet Hegde is the creator and lead developer of **WealthX**. The project demonstrates full-stack software engineering across modern React architectures, Express REST microservices, MongoDB schema optimization, Docker orchestration, and explainable AI system design tailored for financial technology.
+Vijet Hegde is the sole creator and developer of WealthX.
+
+GitHub:  
+[https://github.com/VijetHegde17](https://github.com/VijetHegde17)
+
+Project Repository:  
+[https://github.com/VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)
 
 ---
 
-## 🌐 Live Demo & Deployment Links
+## 📦 Project Status
 
-- **Live Application**: [https://team-vision-x.vercel.app/](https://team-vision-x.vercel.app/)  
-- **GitHub Repository**: [https://github.com/VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)  
+WealthX is currently a local, Dockerized Buildathon prototype.
 
-*(Note: The hosted cloud deployment and local Docker environment may utilize distinct database instances. The local Docker environment provides the complete offline reproducible test harness).*
+The complete application can be run locally using Docker Compose.
+
+No public deployment is currently available.
+
+GitHub Repository:  
+[https://github.com/VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)
