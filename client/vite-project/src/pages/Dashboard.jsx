@@ -6,11 +6,13 @@ import LineChart from "../components/charts/LineChart";
 import BarChart from "../components/charts/BarChart";
 import DonutChart from "../components/charts/DonutChart";
 import { LoadingState, ErrorState, EmptyState } from "../components/common/StateViews";
+import AskWealthXCopilot from "../components/recovery/AskWealthXCopilot";
 import api from "../utils/apiClient";
 import "./Dashboard.css";
 
 export const Dashboard = () => {
   const [data, setData] = useState(null);
+  const [aiFinanceStats, setAiFinanceStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,12 +20,22 @@ export const Dashboard = () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await api.get("/api/dashboard");
-      if (res && res.data) {
-        setData(res.data);
+      const [res, recovRes, reconRes] = await Promise.allSettled([
+        api.get("/api/dashboard"),
+        api.get("/api/recovery/stats"),
+        api.get("/api/reconciliation/stats"),
+      ]);
+
+      if (res.status === "fulfilled" && res.value && res.value.data) {
+        setData(res.value.data);
       } else {
-        throw new Error(res.message || "Failed to load command center data");
+        throw new Error(res.reason?.message || "Failed to load command center data");
       }
+
+      setAiFinanceStats({
+        recovery: recovRes.status === "fulfilled" ? recovRes.value?.data : null,
+        reconciliation: reconRes.status === "fulfilled" ? reconRes.value?.data : null,
+      });
     } catch (err) {
       setError(err.message || "Error connecting to WealthX intelligence server.");
     } finally {
@@ -110,6 +122,113 @@ export const Dashboard = () => {
                   ? "🟡 Moderate Baseline"
                   : "🔴 Urgent Attention"}
               </span>
+            </div>
+          </div>
+        </div>
+
+        {/* AI FINANCIAL COMMAND CENTER (Razorpay Buildathon Track 03 & 04) */}
+        <div className="ai-command-center-section">
+          <div className="section-header-compact">
+            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <span className="badge badge-purple">RAZORPAY AI AGENT</span>
+              <span className="badge-simulated" style={{ fontSize: "11px", padding: "2px 6px" }}>SIMULATED / TEST MODE</span>
+              <h3 className="section-title">AI Financial Command Center</h3>
+            </div>
+            <Link to="/revenue-recovery" className="btn-link" style={{ fontSize: "12px", color: "#38bdf8", textDecoration: "none" }}>
+              Open Recovery Studio →
+            </Link>
+          </div>
+
+          <div className="ai-cards-grid">
+            <div className="ai-stat-card glass-panel glow-hover" title="Dynamic sum from MongoDB of unrecovered payment failures across customer segments">
+              <span className="ai-stat-title">Revenue At Risk ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#f43f5e" }}>
+                ₹{((aiFinanceStats?.recovery?.kpis?.totalRevenueAtRisk ?? 0) / 100000).toFixed(2)}L
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>Across failed checkouts</span>
+            </div>
+
+            <div className="ai-stat-card glass-panel glow-hover" title="Total recorded recovered revenue in simulated mode (baseline historical + live AI campaign successes)">
+              <span className="ai-stat-title">Recovered by AI (Test Mode) ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#10b981" }}>
+                ₹{((aiFinanceStats?.recovery?.kpis?.recoveredRevenue ?? 0) / 1000).toFixed(1)}K
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>{aiFinanceStats?.recovery?.kpis?.recoveredCount ?? 0} autonomous recoveries</span>
+            </div>
+
+            <div className="ai-stat-card glass-panel glow-hover" title="Conversion percentage: (Recovered Revenue / Total Analyzed Volume) × 100">
+              <span className="ai-stat-title">Recovery Rate ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#f59e0b" }}>
+                {aiFinanceStats?.recovery?.kpis?.recoveryRate ?? 0}%
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>Conversion rate</span>
+            </div>
+
+            <div className="ai-stat-card glass-panel glow-hover" title="Percentage of 3-way orders matching gateway collections and bank settlements: (Matched / Total) × 100">
+              <span className="ai-stat-title">Reconciliation Match ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#38bdf8" }}>
+                {aiFinanceStats?.reconciliation?.stats?.matchRate ?? 0}%
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>Orders vs Settlements</span>
+            </div>
+
+            <div className="ai-stat-card glass-panel glow-hover" title="3-way reconciliation exceptions requiring mathematical root-cause explanation">
+              <span className="ai-stat-title">Open Exceptions ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#fb7185" }}>
+                {aiFinanceStats?.reconciliation?.stats?.exceptionsCount ?? 0}
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>Settlement variances</span>
+            </div>
+
+            <div className="ai-stat-card glass-panel glow-hover" title="Total autonomous interventions, campaigns, and stopping rules logged to MongoDB audit trail in the last 24h">
+              <span className="ai-stat-title">AI Actions Today ℹ️</span>
+              <span className="ai-stat-value" style={{ color: "#a855f7" }}>
+                {aiFinanceStats?.recovery?.kpis?.actionsToday ?? 0}
+              </span>
+              <span className="text-muted" style={{ fontSize: "11px" }}>Logged in audit trail</span>
+            </div>
+          </div>
+
+          {/* AI ACTION CENTER */}
+          <div className="ai-action-center-box">
+            <span style={{ fontSize: "12px", fontWeight: 700, color: "#cbd5e1", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              ⚡ AI Action Center — Autonomous Signals
+            </span>
+
+            <div className="ai-action-row">
+              <div className="ai-action-text">
+                <span>🔴</span>
+                <span>
+                  ₹{(aiFinanceStats?.recovery?.kpis?.eligibleRevenue || 86400).toLocaleString("en-IN")} potentially recoverable across {aiFinanceStats?.recovery?.kpis?.eligibleCount || 18} high-confidence opportunities
+                </span>
+              </div>
+              <Link to="/revenue-recovery" className="btn-inspect" style={{ textDecoration: "none" }}>
+                Review Opportunities →
+              </Link>
+            </div>
+
+            <div className="ai-action-row">
+              <div className="ai-action-text">
+                <span>🟠</span>
+                <span>
+                  {aiFinanceStats?.reconciliation?.stats?.exceptionsCount || 13} reconciliation exceptions requiring mathematical verification
+                </span>
+              </div>
+              <Link to="/finance-controller" className="btn-inspect" style={{ textDecoration: "none" }}>
+                Investigate →
+              </Link>
+            </div>
+
+            <div className="ai-action-row">
+              <div className="ai-action-text">
+                <span>🟡</span>
+                <span>
+                  {aiFinanceStats?.recovery?.kpis?.escalatedCount || 8} high-value payment failures need human approval before retry
+                </span>
+              </div>
+              <Link to="/revenue-recovery" className="btn-inspect" style={{ textDecoration: "none" }}>
+                Review Approval Queue →
+              </Link>
             </div>
           </div>
         </div>
@@ -373,6 +492,9 @@ export const Dashboard = () => {
             </Link>
           </div>
         </div>
+
+        {/* Grounded Copilot Drawer */}
+        <AskWealthXCopilot />
       </div>
     </AppLayout>
   );

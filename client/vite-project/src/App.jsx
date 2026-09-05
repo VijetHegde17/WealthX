@@ -35,6 +35,10 @@ import FinancialHistory from "./pages/FinancialHistory";
 import Settings from "./pages/Settings";
 import InvestorQuest from "./pages/InvestorQuest";
 import IntroVideo from "./components/IntroVideo";
+import AIRecoveryStudio from "./pages/recovery/AIRecoveryStudio";
+import AIFinanceController from "./pages/recovery/AIFinanceController";
+import RecoveryAuditTrail from "./pages/recovery/RecoveryAuditTrail";
+import RecoverySimulator from "./pages/recovery/RecoverySimulator";
 
 import "./App.css";
 
@@ -90,6 +94,40 @@ function App() {
             element={
               <ProtectedRoute requireOnboarded={true}>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Razorpay AI Buildathon Modules (Track 03 & Track 04) */}
+          <Route
+            path="/revenue-recovery"
+            element={
+              <ProtectedRoute requireOnboarded={false}>
+                <AIRecoveryStudio />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/finance-controller"
+            element={
+              <ProtectedRoute requireOnboarded={false}>
+                <AIFinanceController />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recovery-audit"
+            element={
+              <ProtectedRoute requireOnboarded={false}>
+                <RecoveryAuditTrail />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/recovery-simulator"
+            element={
+              <ProtectedRoute requireOnboarded={false}>
+                <RecoverySimulator />
               </ProtectedRoute>
             }
           />

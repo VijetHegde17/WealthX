@@ -1,233 +1,448 @@
-# WealthX — Intelligent Wealth & Personal Financial Decision System
-> **Built with the MERN Stack (MongoDB, Express, React 18, Node.js) & Vite**
+# WealthX — AI Revenue Recovery & Financial Intelligence Agent
 
-WealthX is a full-featured Personal Financial Intelligence & Decision System designed with an institutional dark-navy fintech aesthetic, real-time portfolio analytics, multi-tenant security, algorithmic financial calculators, behavioral risk profiling, and multi-pillar diagnostics.
-
----
-
-## 🌟 Key Modules & Features
-
-### 1. 🔐 Authentication & Multi-Tenant Security
-- **JWT Authentication & RBAC**: Secure JSON Web Token authentication with bcrypt password hashing.
-- **Strict Data Isolation**: Multi-tenant database querying (`{ _id, userId }`) ensuring users cannot read, mutate, or delete cross-account financial records.
-- **Password Recovery**: 6-digit OTP email verification with timed expiration and secure reset.
-- **Protected Routing**: React Router v6 route guards with onboarding checks (`<ProtectedRoute>`, `<PublicOnlyRoute>`).
-
-### 2. 📊 Command Center (Dashboard — 6-Level Hierarchy)
-- **Level 1 — Financial Snapshot**: Net Worth (Live assets minus liabilities), Monthly Income, Monthly Surplus (Savings Rate), Emergency Runway.
-- **Level 2 — What Needs My Attention?**: Top 2–4 prioritized algorithmic insights with severity indicators (`🟢 Good`, `🟡 Warning`, `🔴 Critical`).
-- **Level 3 — Visual Diagnostics**: 6-Month Net Worth Trend Line Chart, Cashflow Dynamics Bar Chart, and Asset Allocation Donut.
-- **Level 4 — Wealth Decision**: "Where should your next ₹10,000 go?" visual prompt and direct jump.
-- **Level 5 — Behavioral Blueprint**: Risk DNA score preview and target allocation alignment.
-- **Level 6 — Quick Actions**: Direct action shortcuts.
-
-### 3. 🧬 WealthX Risk DNA (`/risk-dna`)
-- **Behavioral Profiling Wizard**: 7-question diagnostic flow evaluating Age, Income Stability, Emergency Buffer, Investment Horizon, Drawdown Psychological Tolerance, and Primary Goals.
-- **Quantified Risk Score (0–100)**: Classifies users into Conservative, Moderate, Moderate Growth, Growth, or Aggressive.
-- **Portfolio vs. Risk DNA Mismatch Engine**: Evaluates live Wealth Vault holdings against recommended target asset allocation (Equity %, Debt %, Gold %, Cash %) and flags structural deviations.
-
-### 4. 🤖 AI Decision Lab (`/ai-decision-lab`)
-- **Google Gemini AI Intelligence Layer**: Powered by Google Gemini 3.6 Flash connected to the backend decision engine.
-- **Strict Grounding Guardrails**: Gemini reasons over verified balance sheet numbers, Risk DNA, AMFI mutual fund NAVs, and Upstox market metrics without hallucinating financial values.
-- **Conversational Multi-Turn Follow-Ups**: Supports interactive follow-up questions (*"What if I invest ₹5,000 every month?"*, *"Is my portfolio too risky?"*, *"Should I wait before investing?"*).
-- **Structured Reasoning Output**: Explains why a fund matches or does not match, provides risk cautions, Risk DNA alignment, goal pacing impact, and dynamic surplus allocation.
-
-### 5. 💡 "My Next ₹10,000" Surplus Optimizer (`/my-next-money`)
-- **Dynamic Surplus Allocation**: Analyzes real-time emergency runway, debt burden, and growth capacity.
-- **Interactive Custom Amount**: Sliders & quick selectors for ₹5k, ₹10k, ₹25k, ₹50k, and ₹100k.
-- **Visual Segmented Allocation Bar**: Clean color-coded breakdown with rationale for every single rupee.
-
-### 6. ⏳ Future You Simulator (`/future-you`)
-- **Multi-Decade Wealth Trajectory Forecaster**: Compares **Current Baseline Path** (static SIP) vs. **WealthX Optimized Path** (annual step-up compounding).
-- **Interactive SVG Trajectory Chart**: Displays 5, 10, 15, 20, 25, and 30-year projections with interactive crosshairs and delta callouts.
-
-### 7. 🛡️ Investment Hype Check (`/hype-check`)
-- **0–100 Speculation & FOMO Filter**: Audits any stock, memecoin, crypto, derivative, or trendy asset across 6 structural dimensions.
-- **Explicit Labeling**: Tagged with `SIMULATED / SYNTHETIC ANALYTICAL ENGINE (Educational Assessment)`.
-
-### 8. 🇮🇳 Government Schemes Finder (`/schemes`)
-- **Sovereign Wealth & Welfare Directory**: Indexed with India's core government schemes (PPF, NPS, SSY, SGB, SCSS, MSSC, APY).
-- **Profile Matching**: Recommends best fit based on income bracket, risk posture, and tax optimization goals with official government portal links.
-
-### 9. 🕰️ Audit & Financial History (`/history`)
-- **Chronological Timeline Ledger**: Automatically logs asset creations/mutations, loan additions, goal updates, risk profile calibrations, and decision inquiries.
-- **Net Worth Progression Curve**: 6-month historical line chart.
-
-### 10. 🔬 Understand (Diagnostics & Asset Ledger)
-- **Financial X-Ray (`/financial-xray`)**: 4-pillar diagnostics laboratory:
-  - *Income & Cashflow Dynamics*: Inflows, outflows, burn rate, and net savings rate with BarChart.
-  - *Emergency Liquidity Runway*: Current liquid buffer vs. recommended 6-month reserve with visual progress bar.
-  - *Portfolio Diversification*: Multi-category asset distribution with $>65\%$ concentration risk warnings.
-  - *Debt-to-Income (DTI) Health*: Active loan EMI burden analysis (`Low <20%`, `Moderate 20-40%`, `High >40%`).
-- **Wealth Vault (`/wealth-vault`)**: Consolidated asset registry across Stocks, Mutual Funds, Digital Gold, Fixed Deposits, Bonds, Crypto, and Real Estate with live unrealized P&L, DonutChart composition, and Risk DNA comparison.
-- **Financial Goals (`/goals`)**: Milestone tracker with multi-goal progress comparison, deadline countdowns, required monthly contributions, and quick contribution logging.
-- **Action Plan (`/action-plan`)**: Automated priority-grouped action engine (High / Medium / Low).
-
-### 11. 📈 Invest & Save
-- **Investment Hub (`/investments`)**: Asset class directory with risk ratings and statutory disclosures.
-- **Stocks Explorer (`/investments/stocks`)**: Synthetic market analytics engine featuring debounced ticker search, interactive 30-day SVG trendlines, and valuation multiples.
-- **Educational Knowledge Modules**: In-depth investment and tax guides for SIPs, Digital Gold, Fixed Deposits, Bonds, and Index ETFs.
-
-### 12. 🧮 Plan & Calculate (Calculators Suite)
-- **SIP Calculator (`/calculators/sip`)**, **Step-Up SIP (`/calculators/step-up-sip`)**, **Loan EMI (`/calculators/emi`)**, **FD Growth (`/calculators/fd`)**, and **Goal Target (`/calculators/goal`)**.
-
-### 13. 💳 Loans & Debt Management
-- **Loans Overview (`/loans`)**, **Loan Finder (`/loans/finder`)**, **Compare Loans (`/loans/compare`)**, and **Accelerated Prepayment & Payoff Simulator**.
+> **"Intelligence for Every Financial Decision"**  
+> Built by **VisionX** • Developed by **Vijet Hegde**  
+> **GitHub**: [VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX) • **Live Application**: [team-vision-x.vercel.app](https://team-vision-x.vercel.app/)  
+> **Buildathon Focus**: **Razorpay AI Buildathon** — Primary: **Track 03 (AI Revenue Recovery)** • Secondary: **Track 04 (AI Finance Controller)**
 
 ---
 
-## 🛠️ Tech Stack
+> [!IMPORTANT]
+> **SIMULATED / TEST MODE NOTICE & INTEGRATION STATUS**  
+> WealthX currently operates in **SIMULATED / TEST MODE** using high-fidelity, deterministic synthetic datasets modeled after Indian digital payments and Razorpay failure scenarios. The system **does not** initiate live charges, debit real bank accounts, or execute live Razorpay production payment APIs. All payment recoveries, retry simulations, and 3-way reconciliations are executed against isolated database models with strict stopping rules.
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend** | React 18, Vite, React Router v6, Vanilla CSS (Design Tokens, Glassmorphism, Responsive Grid) |
-| **Charts** | Custom Zero-Dependency Responsive SVG Chart Suite (`LineChart`, `BarChart`, `DonutChart`, `ProgressRing`, `AllocationBar`, `ComparisonAreaChart`) |
-| **Backend** | Node.js, Express.js |
-| **Database** | MongoDB (Mongoose ODM) |
-| **Security & Auth**| JSON Web Tokens (JWT), Bcrypt password hashing, Multi-tenant scoping |
-| **Email Service** | Nodemailer (SMTP / Gmail OTP verification) |
+---
+
+## 📌 Executive Summary & Value Proposition
+
+In digital commerce and SaaS, failed transactions and checkout drop-offs represent direct **revenue leakage**. Traditional payment systems rely on blind, static retries that annoy customers, trigger bank rate-limits, and increase churn.
+
+**WealthX** transforms payment failure logs into an autonomous, closed-loop **AI Revenue Recovery & Finance Intelligence Agent**. Instead of unguided retries, WealthX implements an institutional 6-step recovery loop:
+
+$$\textbf{DETECT} \longrightarrow \textbf{DIAGNOSE} \longrightarrow \textbf{DECIDE} \longrightarrow \textbf{ACT (TEST MODE)} \longrightarrow \textbf{MEASURE} \longrightarrow \textbf{AUDIT}$$
+
+### Why WealthX Fits AI Revenue Recovery
+- **Closed-Loop Intelligence**: Moves beyond static dashboard analytics into active decisioning, bounded recovery execution, live rupee measurement, and immutable audit logging.
+- **Responsible AI & Human-in-the-Loop**: Autonomy is strictly bounded by deterministic safety guardrails. High-value payments ($\ge ₹25,000$) and low-confidence predictions ($< 70\%$) automatically halt and escalate for human approval.
+- **Zero-Touch Out-of-the-Box Experience**: Automatically initializes realistic demo datasets for any newly registered user or evaluator, complete with dynamic non-zero metrics and robust multi-tenant isolation.
+
+---
+
+## 🏗️ System Architecture
+
+WealthX is structured as a full-stack containerized micro-architecture running across React/Vite, Node.js/Express, and MongoDB.
+
+```mermaid
+flowchart TD
+    subgraph ClientLayer["Client Layer (Port 5173)"]
+        UI["React 18 + Vite SPA"]
+        CopilotUI["Ask WealthX AI Copilot Drawer"]
+        StudioUI["AI Revenue Recovery Studio"]
+        ControllerUI["AI Finance Controller"]
+    end
+
+    subgraph ServerLayer["Backend API Layer (Port 5000)"]
+        Router["Express REST API Router"]
+        AuthMiddleware["JWT Auth Middleware & User Scoping"]
+        RecoveryCtrl["Recovery Controller & Auto-Init Engine"]
+        ReconCtrl["Reconciliation Controller"]
+        CopilotCtrl["Copilot Grounded Controller"]
+        ScoringService["Bayesian Recovery Scoring Service"]
+        GeminiService["Optional Google Gemini Enrichment"]
+    end
+
+    subgraph DataLayer["Persistence Layer (Port 27017)"]
+        Mongo[("MongoDB Database")]
+        PaymentCol["paymentrecords (Compound Unique Index)"]
+        AuditCol["recoveryauditlogs (Immutable Ledger)"]
+        ReconCol["reconciliationrecords (3-Way Match)"]
+        PolicyCol["recoverypolicies (Safety Rules)"]
+    end
+
+    UI --> Router
+    CopilotUI --> Router
+    StudioUI --> Router
+    ControllerUI --> Router
+
+    Router --> AuthMiddleware
+    AuthMiddleware --> RecoveryCtrl
+    AuthMiddleware --> ReconCtrl
+    AuthMiddleware --> CopilotCtrl
+
+    RecoveryCtrl --> ScoringService
+    ScoringService -.-> GeminiService
+    RecoveryCtrl --> PaymentCol
+    RecoveryCtrl --> AuditCol
+    RecoveryCtrl --> PolicyCol
+
+    ReconCtrl --> ReconCol
+    CopilotCtrl --> PaymentCol
+    CopilotCtrl --> ReconCol
+```
+
+---
+
+## 🔄 Revenue Recovery Lifecycle Workflow
+
+The flowchart below highlights how WealthX processes failed transactions while enforcing autonomous boundaries:
+
+```mermaid
+flowchart TD
+    A["Failed Transaction Detected"] --> B["Detect Revenue at Risk"]
+    B --> C["Diagnose Failure Cause & Customer Track Record"]
+    C --> D["Compute Bayesian Recovery Probability (0-100%)"]
+    D --> E{"Evaluate Policy Guardrails"}
+
+    E -- "Overdue > 45 Days" --> H1["Mark UNRECOVERABLE / Halt"]
+    E -- "Retries >= 3" --> H2["Mark UNRECOVERABLE / Cease Retries"]
+    E -- "Amount >= ₹25,000" --> H3["ESCALATE: Require Human Approval"]
+    E -- "Confidence < 70%" --> H4["ESCALATE: Flag for Operator Review"]
+
+    E -- "Passes All Safety Rules" --> F["Select Bounded Action (smart_retry / reminder_link)"]
+    F --> G["Execute SIMULATED Action in Test Mode"]
+
+    G --> I{"Simulated Gateway Result"}
+    I -- "Success" --> J["Mark RECOVERED & Record Rupee Amount"]
+    I -- "Failed" --> K["Increment Retry Count & Decay Probability"]
+
+    J --> L["Write Immutable Entry to Recovery Audit Trail"]
+    K --> L
+    H1 --> L
+    H2 --> L
+    H3 --> L
+    H4 --> L
+
+    L --> M["Update Live KPIs & Measure Recovered Revenue"]
+```
+
+---
+
+## 🌟 Core Features & Modules
+
+### 1. AI Revenue Recovery Studio (`/revenue-recovery` — Track 03)
+- **Automatic Initialization**: When an evaluator or judge logs into WealthX, the studio automatically detects user state and provisions 120 diverse synthetic payment records with non-zero backend metrics. No manual button clicking is required.
+- **Dynamic KPI Cards**:
+  - **Revenue At Risk**: Real-time sum of failed, pending, escalated, and unrecoverable revenue.
+  - **Total Recovered (Test Mode)**: Rupee amount successfully recovered through AI actions.
+  - **Recovery Conversion Rate**: Percentage of revenue saved versus total recoverable volume.
+  - **Eligible for AI Retry**: Volume meeting all safety and confidence criteria.
+  - **Safety Halts & Escalations**: Count of transactions paused by autonomous guardrails.
+- **Interactive Opportunity Table**: Filter by Status (`Failed`, `Recovered`, `Escalated`, `Unrecoverable`), Segment (`Enterprise`, `SMB`, `VIP`, `Direct Consumer`), or Reason (`Gateway Timeout`, `Insufficient Funds`, `Bank Decline`, etc.).
+- **Deep AI Diagnosis Modal**: Explains *why* the transaction failed, lists 3 supporting behavioral signals, outputs expected outcomes, and presents policy-aligned recommendations.
+- **Single Bounded Execution**: Run simulated recoveries individually with real-time feedback and duplicate-action protection.
+
+### 2. Autonomous Recovery Campaign
+- **One-Click Batch Execution**: Processes all eligible opportunities across the portfolio simultaneously.
+- **Safe Filtering**: Automatically skips high-value transactions and low-confidence transactions, routing them to the escalation queue.
+- **Campaign Summary Modal**: Breaks down Analyzed Count, Eligible Count, Skipped Count, Attempted Count, Total Rupee Yield Recovered, and Effective Campaign Conversion Rate.
+
+### 3. Recovery Strategy Simulator (`/recovery-simulator`)
+- **Strategy Comparison**: Interactive parameter tuning to model **Conservative**, **Balanced**, and **Aggressive** recovery policies.
+- **Real-Time Tradeoff Analysis**: Live sliders for Max Retries (1–5), Confidence Cutoff (50%–90%), and High-Value Ceilings (₹10,000–₹1,00,000) project recovered revenue versus customer friction index and churn risk.
+
+### 4. Recovery Audit Trail (`/recovery-audit`)
+- **Immutable Operational Ledger**: Permanent record of every automated intervention, manual approval, batch campaign, stopping rule halt, and demo reset.
+- **Audited Attributes**: Timestamp, Transaction ID, Action Type, Problem Diagnosis, AI Confidence Score, Selected Intervention, State Transition (`failed` $\to$ `recovered`), Recovered Amount, and Operator Approval Metadata.
+
+### 5. AI Finance Controller (`/finance-controller` — Track 04)
+- **3-Way Automated Reconciliation**: Correlates 100 synthetic orders against payment gateway collection events and bank settlement batches.
+- **Exception Diagnostics**: Detects and categorizes exceptions:
+  - `unmatched_amount`: Return adjustments, coupons, or partial captures.
+  - `missing_settlement`: T+2 clearance window or bank clearance holiday delays.
+  - `duplicate_payment`: Duplicate UPI retries within rapid windows scheduled for refund.
+  - `fee_discrepancy`: International corporate card MDR variances.
+  - `unmatched`: Abandoned checkout sessions without authorization.
+- **Mathematical Root-Cause Explanations**: Provides step-by-step breakdown of fee deductions (2% MDR + 18% GST) and settlement balances.
+
+### 6. Ask WealthX AI Copilot
+- **Grounded Conversational Intelligence**: Floating AI assistant drawer answering natural language queries strictly using verified MongoDB database records:
+  - *"How much revenue did AI recover?"*
+  - *"How much revenue is currently at risk?"*
+  - *"How many recovery opportunities are eligible?"*
+  - *"How many reconciliation exceptions are open?"*
+
+---
+
+## 🛡️ AI Safety & Guardrails
+
+WealthX enforces strict deterministic guardrails to ensure autonomous financial decisions never harm customer relationships or create financial liability:
+
+| Guardrail | Threshold / Rule | Operational Rationale |
+| :--- | :--- | :--- |
+| **Max Automated Retries** | $\le 3$ attempts | Prevents card association rate-limiting, bank penalty fees, and customer irritation. |
+| **Autonomous Confidence Cutoff** | $\ge 70\%$ probability | Low-confidence transactions ($< 70\%$) require human operator review before retrying. |
+| **High-Value Escalation Ceiling** | $\ge ₹25,000$ | Autonomous retries are blocked on large transactions; mandatory human approval required. |
+| **Debt Aging Cutoff** | $> 45$ days overdue | Invoices older than 45 days are marked `unrecoverable` to avoid chasing obsolete debts. |
+| **Duplicate Execution Guard** | Single recovery rule | Once a payment is recovered, repeated retry execution is blocked at database level. |
+| **Multi-Tenant Isolation** | Scoped `userId` queries | Every database query filters by authenticated user; cross-account leaks are impossible. |
+| **Simulation Isolation** | `SIMULATED / TEST MODE` | Live banking credentials are not used; all actions execute against simulated models. |
+
+---
+
+## 🧠 AI Recovery Scoring Methodology
+
+WealthX employs a transparent, explainable **Bayesian / feature-weighted probability model** rather than an opaque black box.
+
+### Feature Weighting Signals
+1. **Failure Reason Baseline ($P_{\text{base}}$)**:
+   - Technical failures / Gateway timeouts: $85\% - 95\%$ baseline likelihood.
+   - Insufficient funds / UPI timeouts: $60\% - 75\%$ baseline likelihood.
+   - Expired card / Overdue invoice: $25\% - 45\%$ baseline likelihood.
+2. **Exponential Retry Decay**:
+   $$\text{Decay Factor} = e^{-0.45 \times \text{retryCount}}$$
+   Recovery likelihood decays rapidly with each failed retry ($0 \to 1.0\times$, $1 \to 0.64\times$, $2 \to 0.41\times$, $3 \to 0.26\times$).
+3. **Customer Track Record**:
+   Bonus of $+3\%$ to $+15\%$ for customers with verified successful payment history ($>5$ past payments).
+4. **Customer Lifetime Value (LTV) & Segment**:
+   Enterprise and VIP customers receive higher intervention priority with personalized reminder link recommendations.
+5. **Invoice Aging Penalty**:
+   Linear decay penalty for overdue invoices ($-1.5\%$ per day overdue up to 45 days).
+6. **Optional Google Gemini Enrichment**:
+   When `GEMINI_API_KEY` is provided, Gemini 2.5 Flash enriches the diagnosis with contextual natural-language rationales and customized recovery communications.
+7. **Deterministic Fallback**:
+   When no AI API key is configured, the system executes 100% locally via deterministic rules without performance degradation.
+
+---
+
+## 📊 Demo / Synthetic Dataset Metrics
+
+The bundled synthetic dataset produces deterministic, non-zero financial metrics across multiple customer segments:
+
+- **120 Payment Records**:
+  - Direct Consumer, SMB, Enterprise, and VIP segments.
+  - Realistic Indian ticket sizes (₹800 to ₹85,000).
+  - Diverse payment rails (UPI, Credit/Debit Cards, Netbanking, Auto-Debit).
+- **100 Reconciliation Records**:
+  - 70 Matched clean settlements.
+  - 30 Discrepancy exceptions across 5 business scenarios.
+- **Baseline Validated Output (Demo Mode)**:
+  - **Initial Revenue At Risk**: ~₹10.86L across 71 failed transactions.
+  - **Historical Baseline Recovered**: ~₹1.99L (15.5% recovery rate).
+  - **Batch Campaign Yield**: ~₹1.19L recovered across 25 transactions (80.6% batch recovery rate).
+  - **Safety Escalations**: ~50 transactions routed to human operator review.
+
+*(All metrics displayed in the application are calculated dynamically from MongoDB documents).*
+
+---
+
+## 💻 Tech Stack
+
+| Category | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | React 18, Vite | High-performance single page application with modern component architecture |
+| **Routing & State** | React Router v6 | Client-side routing with protected authenticated route wrappers |
+| **Styling** | Vanilla CSS | Custom design tokens, dark navy glassmorphic layout, zero Tailwind bloat |
+| **Backend** | Node.js, Express.js | Modular REST API service handling auth, recovery, reconciliation, and copilot |
+| **Database** | MongoDB 7, Mongoose 8 | Multi-tenant schema design with compound unique indexing for tenant isolation |
+| **Authentication** | JWT (jsonwebtoken) | Bearer token authentication with bcrypt password hashing |
+| **AI Intelligence** | Custom Bayesian Model + Gemini | Feature-weighted probabilistic scoring with optional Google Gemini enrichment |
+| **Containerization** | Docker, Docker Compose | Multi-container setup orchestrating Frontend, Backend, and MongoDB |
+| **Testing** | Node.js Built-in Test Runners | End-to-end integration tests, unit verification, and initialization test suites |
 
 ---
 
 ## 📁 Repository Structure
 
-```
-Authentication-main/
+```text
+WealthX/
 ├── client/
-│   └── vite-project/
-│       ├── src/
-│       │   ├── components/
-│       │   │   ├── charts/         # LineChart, BarChart, DonutChart, ProgressRing, AllocationBar, ComparisonAreaChart
-│       │   │   ├── common/         # Disclaimers, StateViews (Loading, Error, Empty)
-│       │   │   ├── layout/         # AppLayout, Sidebar, Navbar
-│       │   │   └── ProtectedRoute.jsx
-│       │   ├── context/            # AuthContext.jsx
-│       │   ├── pages/
-│       │   │   ├── calculators/    # SIP, Step-Up SIP, EMI, FD, Goal Target
-│       │   │   ├── loans/          # Loans Overview, Loan Finder, Compare Loans
-│       │   │   ├── ActionPlan.jsx
-│       │   │   ├── AIDecisionLab.jsx
-│       │   │   ├── Dashboard.jsx
-│       │   │   ├── FinancialHistory.jsx
-│       │   │   ├── FinancialXRay.jsx
-│       │   │   ├── FutureYou.jsx
-│       │   │   ├── Goals.jsx
-│       │   │   ├── GovernmentSchemes.jsx
-│       │   │   ├── Home.jsx
-│       │   │   ├── HypeCheck.jsx
-│       │   │   ├── InvestmentEduPage.jsx
-│       │   │   ├── InvestmentHub.jsx
-│       │   │   ├── Login.jsx
-│       │   │   ├── MyNextMoney.jsx
-│       │   │   ├── Onboarding.jsx
-│       │   │   ├── RiskDNA.jsx
-│       │   │   ├── SignUp.jsx
-│       │   │   ├── StocksExplorer.jsx
-│       │   │   └── WealthVault.jsx
-│       │   ├── utils/              # apiClient.js
-│       │   ├── App.jsx             # Route definitions
-│       │   └── index.css           # Global tokens & glassmorphism system
-│       ├── package.json
-│       └── vite.config.js
+│   ├── vite-project/
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   │   ├── common/             # StateViews, LoadingState, ErrorState
+│   │   │   │   ├── layout/             # AppLayout, Sidebar, Navbar
+│   │   │   │   └── recovery/           # AskWealthXCopilot drawer
+│   │   │   ├── context/                # AuthContext (JWT state management)
+│   │   │   ├── pages/
+│   │   │   │   ├── recovery/           # AIRecoveryStudio, AIFinanceController,
+│   │   │   │   │                       # RecoveryAuditTrail, RecoverySimulator
+│   │   │   │   ├── Dashboard.jsx       # AI Financial Command Center
+│   │   │   │   ├── Login.jsx           # User authentication
+│   │   │   │   └── Signup.jsx          # New user registration
+│   │   │   └── utils/                  # apiClient (Axios/Fetch wrapper)
+│   │   ├── Dockerfile
+│   │   └── package.json
 ├── server/
-│   ├── config/                     # db.js (MongoDB Connection)
-│   ├── controllers/                # Auth, Profile, Dashboard, Asset, Goal, X-Ray, ActionPlan, Investment, Calculator, Loan, Risk, Decision, NextMoney, Simulation, HypeCheck, Schemes, History
-│   ├── middleware/                 # authMiddleware.js
-│   ├── models/                     # User, FinancialProfile, Asset, Goal, Loan, RiskProfile, FinancialHistory
-│   ├── routes/                     # authRoutes, profileRoutes, dashboardRoutes, assetRoutes, goalRoutes, xrayRoutes, actionPlanRoutes, investmentRoutes, calculatorRoutes, loanRoutes, riskRoutes, decisionRoutes, nextMoneyRoutes, simulationRoutes, hypeCheckRoutes, schemesRoutes, historyRoutes
-│   ├── services/                   # historyService.js, marketDataService.js
-│   ├── utils/                      # sipCalculator, stepUpSipCalculator, emiCalculator, fdCalculator, goalCalculator, apiResponse
-│   ├── .env.example
-│   ├── server.js
-│   └── package.json
+│   ├── config/
+│   │   └── db.js                       # MongoDB connection & index sync
+│   ├── controllers/
+│   │   ├── authController.js           # Signup, login, password validation
+│   │   ├── copilotController.js        # Grounded database Q&A agent
+│   │   ├── reconciliationController.js # 3-way match & exception engine
+│   │   └── recoveryController.js       # Recovery stats, execution, batch campaign, deduplication
+│   ├── middleware/
+│   │   └── authMiddleware.js           # JWT verification & req.user attachment
+│   ├── models/
+│   │   ├── PaymentRecord.js            # Compound unique index { transactionId, userId }
+│   │   ├── ReconciliationRecord.js     # 3-way reconciliation ledger
+│   │   ├── RecoveryAuditLog.js         # Immutable recovery decision audit trail
+│   │   ├── RecoveryPolicy.js           # Autonomous safety thresholds
+│   │   └── User.js                     # User authentication model
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── copilotRoutes.js
+│   │   ├── reconciliationRoutes.js
+│   │   └── recoveryRoutes.js
+│   ├── services/
+│   │   └── recoveryScoringService.js   # Bayesian scoring & Gemini enrichment
+│   ├── tests/
+│   │   ├── recoveryTest.js             # 15 unit tests for scoring & guardrails
+│   │   ├── testEndToEnd.js             # 11-step complete system verification
+│   │   ├── testExistingWealthX.js      # Existing WealthX core feature checks
+│   │   └── testInitCheck.js            # Auto-initialization & deduplication tests
+│   ├── utils/
+│   │   ├── apiResponse.js              # Standardized API response formatters
+│   │   └── seedRecoveryData.js         # Deterministic 120-payment & 100-recon dataset generator
+│   ├── Dockerfile
+│   ├── package.json
+│   └── .env.example
+├── k8s/                                # Kubernetes deployment manifests
+├── docker-compose.yml                  # Root multi-container orchestration
+├── .gitignore
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started Locally
+## 🚀 Local Development & Setup
 
 ### Prerequisites
-- **Node.js**: v18.0.0 or higher
-- **MongoDB**: Local MongoDB instance running on `mongodb://127.0.0.1:27017` or MongoDB Atlas URI
+- **Git**
+- **Node.js** (v18 or v20 recommended)
+- **Docker Desktop** (running locally)
+
+### Quickstart with Docker Compose (Recommended)
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/VijetHegde17/WealthX.git
+   cd WealthX
+   ```
+
+2. **Configure Environment Variables**:
+   Create `server/.env` using `server/.env.example` as reference:
+   ```bash
+   cp server/.env.example server/.env
+   ```
+   *Example development configuration (no real secrets needed for demo mode)*:
+   ```ini
+   PORT=5000
+   MONGO_URI=mongodb://mongo:27017/wealthx
+   JWT_SECRET=wealthx_local_super_secret_development_key_2026
+   CLIENT_URL=http://localhost:5173
+   # Optional: Google Gemini API key for dynamic diagnosis rationales
+   GEMINI_API_KEY=
+   ```
+
+   > [!WARNING]
+   > Never commit `.env` files or credentials to version control. The repository includes strict `.gitignore` rules for all `.env` files.
+
+3. **Build & Launch Containers**:
+   ```bash
+   docker compose build
+   docker compose up -d
+   ```
+
+4. **Verify Service Health**:
+   ```bash
+   docker compose ps
+   ```
+   All three containers should be in the `Up` state:
+   - **Frontend**: [http://localhost:5173](http://localhost:5173)
+   - **Backend API**: [http://localhost:5000](http://localhost:5000)
+   - **MongoDB**: `localhost:27017`
 
 ---
 
-### 1. Configure the Backend Server
+## 🧪 Automated Testing Suite
 
-Navigate to the `server/` directory:
+WealthX includes a comprehensive automated test harness covering algorithmic scoring, safety guardrails, end-to-end user flows, and automatic demo deduplication.
+
+Run tests directly against the local or Docker backend:
+
 ```bash
-cd server
-npm install
+# 1. Recovery Scoring & Guardrails Unit Tests (15 tests)
+node server/tests/recoveryTest.js
+
+# 2. Existing Platform Functionality Verification
+node server/tests/testExistingWealthX.js
+
+# 3. Auto-Initialization & Deduplication Test Suite
+node server/tests/testInitCheck.js
+
+# 4. End-to-End System Integration Flow (11 steps)
+node server/tests/testEndToEnd.js
 ```
 
-Create a `.env` file in `server/`:
-```env
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/wealthx
-JWT_SECRET=your_super_secret_jwt_key_wealthx_2026
-CLIENT_URL=http://localhost:5173
-```
-
-Start the backend development server:
-```bash
-npm run dev
-```
-> The API will start on **`http://127.0.0.1:5000`**.
+### Verified Test Results Summary
+- `recoveryTest.js`: **15 Passed, 0 Failed** (Stopping rules, ₹25k ceiling, 70% threshold, exponential retry decay, 2% MDR + 18% GST calculation).
+- `testExistingWealthX.js`: **Passed** (Authentication, JWT validation, Dashboard analytics, user profile).
+- `testInitCheck.js`: **Passed** (401 unauthenticated protection, `judge.demo` non-zero initialization, new user auto-seed, verified 120 $\to$ 120 deduplication).
+- `testEndToEnd.js`: **11/11 Steps Completed Successfully** (Health check, seed, KPIs, single recovery, duplicate action protection, batch campaign, audit trail, reconciliation, Copilot Q&A).
 
 ---
 
-### 2. Configure the Frontend Client
+## 📡 API Reference
 
-In a new terminal, navigate to `client/vite-project/`:
-```bash
-cd client/vite-project
-npm install
-```
+All recovery and reconciliation routes require standard Bearer token authentication (`Authorization: Bearer <token>`).
 
-Start the Vite development server:
-```bash
-npm run dev
-```
-> The web application will launch on **`http://localhost:5173`**.
+### AI Revenue Recovery (`/api/recovery`)
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/recovery/stats` | Returns aggregated KPIs (Revenue at risk, recovered amount, conversion rate) with auto-initialization. |
+| `GET` | `/api/recovery/records` | Returns paginated, filtered payment records (status, segment, reason, probability). |
+| `GET` | `/api/recovery/records/:id` | Returns single transaction record with deep AI diagnosis and Gemini analysis. |
+| `POST`| `/api/recovery/execute/:id` | Executes simulated recovery on a single payment under policy rules. |
+| `POST`| `/api/recovery/batch-campaign`| Executes autonomous batch campaign across all eligible failed payments. |
+| `POST`| `/api/recovery/reset-demo` | Resets and re-seeds deterministic 120-record demo dataset for authenticated user. |
+| `GET` | `/api/recovery/audit` | Returns paginated, searchable immutable recovery audit logs. |
+| `POST`| `/api/recovery/simulate-strategy` | Simulates recovery rate vs. customer friction tradeoffs under custom thresholds. |
+| `GET` | `/api/recovery/policy` | Retrieves active autonomous recovery policy and thresholds. |
+| `PUT` | `/api/recovery/policy` | Updates autonomous policy parameters (max retries, confidence cutoff, ceilings). |
 
----
+### AI Finance Controller (`/api/reconciliation`)
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/reconciliation/stats` | Returns match rate %, exception counts, and discrepancy rupee pool volume. |
+| `GET` | `/api/reconciliation/records`| Returns paginated 3-way reconciliation records (orders, payments, settlements). |
+| `GET` | `/api/reconciliation/explain/:id` | Provides mathematical root-cause AI explanation for an exception. |
+| `POST`| `/api/reconciliation/resolve/:id` | Marks reconciliation discrepancy resolved with audit notes. |
 
-## 📡 Core API Endpoints
-
-### 🔐 Authentication & Profile
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/auth/signup` | Register new user account | No |
-| `POST` | `/api/auth/login` | Authenticate user & receive JWT token | No |
-| `GET` | `/api/profile` | Retrieve user financial calibration | Yes |
-| `POST` | `/api/profile` | Upsert financial profile | Yes |
-
-### 🤖 Financial Intelligence & Decision Engines
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/risk-dna` | Retrieve Risk DNA & portfolio mismatch analysis | Yes |
-| `POST` | `/api/risk-dna` | Submit 7-question Risk DNA assessment | Yes |
-| `POST` | `/api/decision-lab/evaluate` | Evaluate financial questions with 6-pillar breakdown | Yes |
-| `GET` | `/api/decision-lab/preset-questions` | Get curated decision topics | Yes |
-| `POST` | `/api/next-money/allocate` | Calculate dynamic surplus distribution for ₹10k | Yes |
-| `POST` | `/api/simulations/future-you` | Simulate 30-year Current vs Optimized trajectories | Yes |
-| `POST` | `/api/hype-check/analyze` | 0–100 Hype Score assessment across 6 dimensions | Yes |
-| `GET` | `/api/schemes` | Get India government schemes matched to profile | Yes |
-| `GET` | `/api/history` | Chronological audit timeline & net worth trend | Yes |
-
-### 📊 Dashboard & Diagnostics
-| Method | Endpoint | Description | Auth Required |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/dashboard` | 6-level metrics, net worth trend, health score | Yes |
-| `GET` | `/api/financial-xray` | Multi-pillar financial diagnostics & insights | Yes |
-| `GET` | `/api/action-plan` | Rule-prioritized action items | Yes |
+### AI Copilot (`/api/copilot`)
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `POST`| `/api/copilot/query` | Answers natural language queries grounded directly in live MongoDB financial records. |
 
 ---
 
-## 🔒 Security & Compliance Standards
+## 🔮 Current Limitations & Future Roadmap
 
-- **Tenant Isolation**: Every database write and read on Assets, Goals, Loans, RiskProfiles, and FinancialHistory is strictly scoped to `req.user.id` verified from the cryptographically signed JWT.
-- **Server-Side Numeric Validation**: All amounts, interest rates, and tenures are strictly validated against non-negative boundary rules server-side.
-- **Statutory Disclaimers**: Cautious, transparent disclosures rendered across all investment and lending views:
-  > *"WealthX provides educational information and algorithmic calculations only. This should not be considered personalized financial or investment advice. Investments are subject to market risks."*
+### Current Scope (Buildathon Prototype)
+- Operates in **SIMULATED / TEST MODE** using deterministic, high-fidelity synthetic Razorpay payment and reconciliation records.
+- Simulated gateway outcomes model probabilistic bank authorization responses without connecting to live banking rails.
+- AI enrichment uses Google Gemini 2.5 Flash when configured, with a robust deterministic mathematical fallback.
+
+### Future Roadmap
+- **Razorpay Test Mode Integration**: Direct integration with Razorpay Test Mode Payment Links and Virtual Accounts.
+- **Webhook Event Ingestion**: Live webhook listeners (`payment.failed`, `order.paid`, `settlement.processed`) for real-time event streaming.
+- **Continuous ML Model Retraining**: Replacing Bayesian heuristic scoring with gradient-boosted trees (e.g., XGBoost/LightGBM) trained on historical merchant datasets.
+- **A/B Testing Recovery Strategies**: Multi-armed bandit algorithms to automatically discover optimal retry timing windows per customer segment.
+
+---
+
+## 👨‍💻 About the Developer
+
+**Vijet Hegde**  
+- **GitHub**: [@VijetHegde17](https://github.com/VijetHegde17)  
+- **Project Repository**: [VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)  
+
+Vijet Hegde is the creator and lead developer of **WealthX**. The project demonstrates full-stack software engineering across modern React architectures, Express REST microservices, MongoDB schema optimization, Docker orchestration, and explainable AI system design tailored for financial technology.
+
+---
+
+## 🌐 Live Demo & Deployment Links
+
+- **Live Application**: [https://team-vision-x.vercel.app/](https://team-vision-x.vercel.app/)  
+- **GitHub Repository**: [https://github.com/VijetHegde17/WealthX](https://github.com/VijetHegde17/WealthX)  
+
+*(Note: The hosted cloud deployment and local Docker environment may utilize distinct database instances. The local Docker environment provides the complete offline reproducible test harness).*

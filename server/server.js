@@ -28,6 +28,9 @@ const schemesRoutes = require("./routes/schemesRoutes");
 const historyRoutes = require("./routes/historyRoutes");
 const mutualFundRoutes = require("./routes/mutualFundRoutes");
 const investorQuestRoutes = require("./routes/investorQuestRoutes");
+const recoveryRoutes = require("./routes/recoveryRoutes");
+const reconciliationRoutes = require("./routes/reconciliationRoutes");
+const copilotRoutes = require("./routes/copilotRoutes");
 
 dotenv.config();
 
@@ -59,6 +62,9 @@ app.use("/api/schemes", schemesRoutes);
 app.use("/api/history", historyRoutes);
 app.use("/api/mutual-funds", mutualFundRoutes);
 app.use("/api/investor-quest", investorQuestRoutes);
+app.use("/api/recovery", recoveryRoutes);
+app.use("/api/reconciliation", reconciliationRoutes);
+app.use("/api/copilot", copilotRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend is Running 🚀");

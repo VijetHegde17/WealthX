@@ -14,6 +14,16 @@ export const Sidebar = ({ isMobileOpen, onCloseMobile }) => {
 
   const navSections = [
     {
+      key: "ai_finance",
+      title: "AI Revenue & Finance",
+      items: [
+        { label: "AI Revenue Recovery", path: "/revenue-recovery", icon: "⚡", badge: "Track 03" },
+        { label: "AI Finance Controller", path: "/finance-controller", icon: "⚖️", badge: "Track 04" },
+        { label: "Recovery Audit Trail", path: "/recovery-audit", icon: "📜" },
+        { label: "Strategy Simulator", path: "/recovery-simulator", icon: "🎯" },
+      ],
+    },
+    {
       key: "understand",
       title: "Understand",
       items: [
